@@ -1,0 +1,6 @@
+{
+	"kafkaBrokerUrl": ["localhost:9092"], 
+	"kafkaConsumerTopic": "ctest",
+	"kafkaProducerTopic": "ptest",
+	"kafkaClientId": "1"
+}
