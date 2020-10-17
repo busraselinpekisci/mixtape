@@ -1,0 +1,177 @@
+{
+	"namespace": "hls_message.avro",
+	"type": "record",
+	"name": "Message",
+	"fields": [
+        {"name": "job_id", "type": "string"},
+		{
+		    "name": "params",
+		    "type": [
+		        "null",
+                {
+                    "type": "record",
+                    "name": "Params",
+                    "fields": [
+                        {
+                            "name": "s3_info",
+                            "type": {
+                                "type": "record",
+                                "name": "S3_Info",
+                                "fields": [
+                                    {
+                                        "name": "source",
+                                        "type": {
+                                            "type": "record",
+                                            "name": "s3_source",
+                                            "fields": [
+                                                {
+                                                    "name": "s3_credential",
+                                                    "type": {
+                                                        "type": "record",
+                                                        "name": "source_s3_credential",
+                                                        "fields": [
+                                                            {"name": "endpoint", "type": "string"},
+                                                            {"name": "access_key_id", "type": "string"},
+                                                            {"name": "secret_access_key", "type": "string"},
+                                                            {"name": "region", "type": "string"}
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "name": "s3_file",
+                                                    "type": {
+                                                        "type": "record",
+                                                        "name": "s3_file_list",
+                                                        "fields": [
+                                                                {"name": "bucket", "type": "string"},
+                                                                {"name": "path", "type": "string"},
+                                                                {"name": "name", "type": ["null", "string"]},
+                                                                {"name": "pure_name", "type": ["null", "string"]}
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "destination",
+                                        "type": [
+                                            "null",
+                                            {
+                                                "type": "record",
+                                                "name": "s3_destination",
+                                                "fields": [
+                                                    {
+                                                        "name": "s3_credential",
+                                                        "type": {
+                                                            "type": "record",
+                                                            "name": "destination_s3_credential",
+                                                            "fields": [
+                                                                {"name": "endpoint", "type": "string"},
+                                                                {"name": "access_key_id", "type": "string"},
+                                                                {"name": "secret_access_key", "type": "string"},
+                                                                {"name": "region", "type": "string"}
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "s3_file",
+                                                        "type": {
+                                                            "type": "record",
+                                                            "name": "destination_s3_file",
+                                                            "fields": [
+                                                                {"name": "bucket", "type": "string"},
+                                                                {"name": "path", "type": "string"},
+                                                                {"name": "name", "type": ["null", "string"]},
+                                                                {"name": "pure_name", "type": ["null", "string"]}
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "commands",
+                            "type": {
+                                "type": "array",
+                                "items": {
+                                    "name": "command_list",
+                                    "type": "record",
+                                    "fields": [
+                                        {"name": "cmd_name", "type": "string"},
+                                        {"name": "cmd", "type": "string"},
+                                        {"name": "stdout", "type": "string"},
+										{"name": "upload", "type": "string"}
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+		    ]
+        },
+        {
+            "name": "job_response",
+            "type": [
+                "null",
+                {
+                    "type": "array",
+                    "items": {
+                        "name": "job_response_list",
+                        "type": "record",
+                        "fields": [
+                            {"name": "cmd_name", "type": "string"},
+                            {"name": "cmd", "type": "string"},
+                            {"name": "stdout", "type": "string"},
+                            {"name": "upload", "type": "string"}
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "sequence",
+            "type": [
+                "null",
+                {
+                    "type": "record",
+                    "name": "sequence_info",
+                    "fields": [
+                        {"name": "current_job", "type": "string"},
+                        {"name": "current_job_id", "type": "string"},
+                        {"name": "main_job_id", "type": "string"}
+                    ]
+                }
+            ]
+        },
+		{
+		    "name": "status",
+		    "type": [
+		        "null",
+		        {
+		            "type": "enum",
+		            "name": "Status",
+		            "symbols": ["PROCESSING", "SUCCESS", "FAILURE"]
+		        }
+		    ]
+		},
+		{
+		    "name": "errors",
+		    "type": [
+		        "null",
+		        {
+		            "type": "array",
+		            "items": "string"
+		        }
+		    ]
+		},
+		{
+		    "name": "version",
+		    "type": ["string", "null"]
+		}
+	]
+}
