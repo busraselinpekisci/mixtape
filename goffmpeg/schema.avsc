@@ -1,0 +1,30 @@
+{
+  "namespace": "goservice.avro",
+  "type": "record",
+  "name": "message",
+  "fields" : [
+	{"name": "job_id", "type": "string"},
+	{
+	    "name": "params",
+	    "type": {
+	        "type": "record",
+	        "name": "Params",
+	        "fields": [
+	            {"name": "command", "type": "string"},
+				{"name": "parameters", "type": "string"},
+				{"name": "endpoint", "type": "string"},
+				{"name": "access_key_id", "type": "string"},
+				{"name": "secret_access_key", "type": "string"},
+				{"name": "bucket_name", "type": "string"},
+				{"name": "region", "type": "string"},
+				{"name": "upload_file_name", "type": "string"},
+				{"name": "upload_file_path", "type": "string"},
+				{"name": "download_file_name", "type": "string"},
+				{"name": "download_file_path", "type": "string"},
+				{"name": "content_type", "type": "string"}
+	        ]
+	    	}
+        }
+
+  ]
+}
