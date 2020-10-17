@@ -1,0 +1,8 @@
+{
+	"kafkaBrokerUrl": ["localhost:9092"], 
+	"kafkaConsumerTopic": "hls-consumer-topic-dev",
+	"kafkaProducerTopic": "hls-producer-topic-dev",
+	"kafkaClientId": "1",
+	"requestSchemaPath":"./schema.avsc",
+	"responseSchemaPath":"./respschema.avsc"
+}
